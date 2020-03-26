@@ -1,0 +1,4 @@
+{
+  "connectionString": "mongodb://localhost/tasks",
+  "jwtPrivateKey": "ff"
+}
