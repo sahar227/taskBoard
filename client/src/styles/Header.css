@@ -1,0 +1,17 @@
+.header {
+    display: flex;
+    align-items: center;
+    background: rgb(72, 159, 189);
+    padding: 1rem 0.5rem;
+    justify-content: space-between;
+    border-radius: 8px;
+}
+
+.logo {
+    margin-left: 3rem;
+}
+
+.log {
+    margin-right: 3rem;
+    font-size: 1.5rem;
+}

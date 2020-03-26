@@ -4,12 +4,13 @@ import Login from '../screens/Login';
 import Signup from '../screens/Signup';
 import Dashboard from '../screens/Dashboard';
 import history from '../history';
+import Header from './Header';
 
 export default class App extends Component {
     render() {
         return (
             <div>
-                App
+                <Header/>
                 <Router history={history}>
                     <Switch>
                         <Route path="/" exact component={Dashboard} />
