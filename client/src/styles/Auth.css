@@ -1,0 +1,17 @@
+.auth {
+    margin-right: 3rem;
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    color: white;
+    background-color: rgb(18, 138, 185);
+    border: 2px solid rgba(0, 32, 90, 0.5);
+    transition: background-color 0.2s ease-out,
+                color 0.2s ease-out;
+}
+
+.auth:hover {
+    background-color: rgba(255,255,255,1);
+    color: black;
+}
