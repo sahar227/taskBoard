@@ -1,12 +1,13 @@
 import {Field, reduxForm} from 'redux-form';
 import React from 'react';
+import '../styles/UserForm.css';
 
 class UserForm extends React.Component {
     renderInput = ({input, label, type}) => {
         return (
-            <div>
+            <div className="field">
                 <label>{label}</label>
-                <input type={type} {...input} required/>
+                <input className="input" type={type} {...input} required/>
             </div>
         )
     };
@@ -20,10 +21,13 @@ class UserForm extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.props.handleSubmit(this.props.onSubmit)}>
-                {this.renderFields()}
-                <button>Submit</button>
-            </form>
+            <div className="user-form">
+                <h1 style={{textAlign: "center"}}>{this.props.title}</h1>
+                <form className="form" onSubmit={this.props.handleSubmit(this.props.onSubmit)}>
+                    {this.renderFields()}
+                    <button className="submit-button">Submit</button>
+                </form>
+            </div>
         )
     }
 }

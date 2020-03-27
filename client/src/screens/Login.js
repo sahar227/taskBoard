@@ -11,12 +11,12 @@ export class Login extends Component {
   fields = [
     {
       name: 'email',
-      label: 'enter your email',
+      label: 'Enter your email: ',
       type: 'email'
     },
     {
       name: 'password',
-      label: 'enter your password',
+      label: 'Enter your password: ',
       type: 'password'
     }
   ];
@@ -24,8 +24,7 @@ export class Login extends Component {
   render() {
     return (
       <div>
-        <h1>Log in</h1>
-        <UserForm fields={this.fields} onSubmit={this.onSubmit} />
+        <UserForm title="Log in" fields={this.fields} onSubmit={this.onSubmit} />
       </div>
     );
   }

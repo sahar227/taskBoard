@@ -1,0 +1,39 @@
+.user-form {
+  background-color: rgb(111, 169, 255);
+  color: white;
+  text-shadow: 1px 1px black;
+  font-size: 1.2rem;
+  width: 50%;
+  margin: auto;
+  margin-top: 2rem;
+  border: 2px solid rgb(0, 57, 163);
+  padding: 1rem;
+  min-height: 300px;
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.field {
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  display: flex;
+  width: 100%;
+}
+
+.input {
+  padding-right: 8rem;
+}
+
+.submit-button {
+  width: 50%;
+  align-self: center;
+  margin-top: 2rem;
+  background-color: white;
+  padding: 0.5rem 0;
+  border: none;
+  cursor: pointer;
+}
