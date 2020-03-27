@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../styles/Auth.css';
 import {connect} from 'react-redux';
-import {logIn, logOut} from '../actions/userActions';
+import {logOut} from '../actions/userActions';
 import history from '../history';
 
 class Auth extends Component {
@@ -35,4 +35,4 @@ const mapStateToProps = (state) => ({
     isLoggedIn: state.isLoggedIn
 });
 
-export default connect(mapStateToProps, {logIn, logOut})(Auth);
+export default connect(mapStateToProps, {logOut})(Auth);
