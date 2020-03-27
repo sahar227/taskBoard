@@ -12,9 +12,8 @@ export const logOut = () => {
   };
 };
 
-const tmpCred = { email: "sahar22@walla.com", password: "123456" };
 export const logIn = credentials => async dispatch => {
-  const response = await api.post("/auth", tmpCred);
+  const response = await api.post("/auth", credentials);
   if (response.status === 200) {
     localStorage.setItem(authToken, response.data);
     api.defaults.headers["x-auth-token"] = response.data;
