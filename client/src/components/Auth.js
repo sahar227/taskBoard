@@ -23,7 +23,7 @@ class Auth extends Component {
     render() {
         const renderParams = this.getRenderParams(true); // TODO: pass state for whether we are logged in
         return (
-            <button className="auth" onClick={renderParams.onClick}>
+            <button className="auth pump" onClick={renderParams.onClick}>
                 {renderParams.text}
             </button>
         )

@@ -8,5 +8,9 @@
 }
 
 .logo {
+    font-family: sans-serif;
     margin-left: 3rem;
+    color: rgb(255, 255, 255);
+    -webkit-text-stroke: 1px rgb(21, 30, 80);
+    text-shadow: 2px 2px black;
 }
