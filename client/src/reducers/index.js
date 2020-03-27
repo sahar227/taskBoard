@@ -1,5 +1,6 @@
 import {combineReducers} from 'redux';
+import logInReducer from './logInReducer';
 
 export default combineReducers({
-    dumy: () => 'delete me'
+    isLoggedIn: logInReducer
 });
