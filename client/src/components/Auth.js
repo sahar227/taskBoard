@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
 import '../styles/Auth.css';
+import history from '../history';
 
 class Auth extends Component {
-
-    // TODO: implement onClick events
     getRenderParams = (isLoggedIn) => {
         if(isLoggedIn)
             return {
                 text: 'Log in',
-                onClick: () => console.log('Clicked to log in')
+                onClick: () => history.push('/login')
             };
         return {
             text: 'Log out',
-            onClick: () => console.log('Clicked to log out')
+            onClick: () => console.log('Clicked to log out') // TODO: needs to remove auth token from local storage
         };
     }
 
@@ -21,7 +20,7 @@ class Auth extends Component {
     }
 
     render() {
-        const renderParams = this.getRenderParams(true); // TODO: pass state for whether we are logged in
+        const renderParams = this.getRenderParams(false); // TODO: pass state for whether we are logged in
         return (
             <button className="auth pump" onClick={renderParams.onClick}>
                 {renderParams.text}

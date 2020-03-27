@@ -5,7 +5,7 @@ import '../styles/Header.css';
 export default function Header() {
     return (
         <div className="header">
-            <h1 className="logo">Logo</h1>
+            <h1 className="logo">Task Board</h1>
             <Auth/>
         </div>
     )
