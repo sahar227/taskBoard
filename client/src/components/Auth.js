@@ -9,11 +9,13 @@ class Auth extends Component {
         if(!isLoggedIn)
             return {
                 text: 'Log in',
-                onClick: () => history.push('/login')
+                onClick: () => history.push('/login'),
+                styles: 'pump'
             };
         return {
             text: 'Log out',
-            onClick: () => this.props.logOut()
+            onClick: () => this.props.logOut(),
+            styles: ''
         };
     }
 
@@ -24,7 +26,7 @@ class Auth extends Component {
     render() {        
         const renderParams = this.getRenderParams(this.props.isLoggedIn);        
         return (
-            <button className="auth pump" onClick={renderParams.onClick}>
+            <button className={`auth ${renderParams.styles}`} onClick={renderParams.onClick}>
                 {renderParams.text}
             </button>
         )
