@@ -22,10 +22,11 @@ class UserForm extends React.Component {
     render() {
         return (
             <div className="user-form">
-                <h1 style={{textAlign: "center"}}>{this.props.title}</h1>
+                <h1>{this.props.title}</h1>
                 <form className="form" onSubmit={this.props.handleSubmit(this.props.onSubmit)}>
                     {this.renderFields()}
-                    <button className="submit-button">Submit</button>
+                    <button className="button">{this.props.callToAction}</button>
+                    {this.props.additionalAction && this.props.additionalAction()}
                 </form>
             </div>
         )

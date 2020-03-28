@@ -28,7 +28,7 @@
   padding-right: 8rem;
 }
 
-.submit-button {
+.button {
   width: 50%;
   align-self: center;
   margin-top: 2rem;
@@ -36,4 +36,10 @@
   padding: 0.5rem 0;
   border: none;
   cursor: pointer;
+}
+
+.sign-up {
+  background-color: rgb(170, 255, 0);
+  border: 1px solid black;
+  width: 30%;
 }
