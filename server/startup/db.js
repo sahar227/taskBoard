@@ -1,8 +1,15 @@
-const winston = require('winston');
-const mongoose = require('mongoose');
-const config = require('config');
+const winston = require("winston");
+const mongoose = require("mongoose");
+const config = require("config");
+const Fawn = require("fawn");
+
+Fawn.init(mongoose);
 
 module.exports = function() {
-  mongoose.connect(config.get('connectionString'), {useNewUrlParser: true, useUnifiedTopology: true})
-    .then(() => winston.info('Connected to MongoDB...'));
-}
+  mongoose
+    .connect(config.get("connectionString"), {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    })
+    .then(() => winston.info("Connected to MongoDB..."));
+};
