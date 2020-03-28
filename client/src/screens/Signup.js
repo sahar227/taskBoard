@@ -10,7 +10,7 @@ export class Signup extends Component {
     const token = response?.headers['x-auth-token'];
     if(token) {
       localStorage.setItem(authToken, token);
-      history.push('/');
+      history.push('/boards');
     }
   }
 

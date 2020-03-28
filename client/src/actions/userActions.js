@@ -17,7 +17,7 @@ export const logIn = credentials => async dispatch => {
   if (response.status === 200) {
     localStorage.setItem(authToken, response.data);
     api.defaults.headers["x-auth-token"] = response.data;
-    history.push("/");
+    history.push("/boards");
     dispatch({
       type: LOG_IN,
       payload: "success"
