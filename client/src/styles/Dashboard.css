@@ -11,16 +11,3 @@
   min-height: 70vh;
   background-color: teal;
 }
-
-.card {
-  border: 1px solid black;
-  width: 25vw;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
-  background-color: rgba(255, 255, 255, 0.8);
-  padding: 2rem;
-  margin-bottom: 0.3rem;
-  border-radius: 8px;
-}

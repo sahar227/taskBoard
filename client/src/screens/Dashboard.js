@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import AddBoard from '../components/AddBoard';
-import '../styles/Dashboard.css';
-import {connect} from 'react-redux';
-import {fetchBoards} from '../actions/boardActions';
+import AddBoard from "../components/AddBoard";
+import "../styles/Dashboard.css";
+import { connect } from "react-redux";
+import { fetchBoards } from "../actions/boardActions";
+import Card from "../components/Card";
 
 export class Dashboard extends Component {
   componentDidMount() {
@@ -10,14 +11,14 @@ export class Dashboard extends Component {
   }
 
   renderBoards = () => {
-    return this.props.boards.map((board) => <a key={board._id} className="card">{board.title}</a>)
-  }
+    return this.props.boards.map(board => <Card board={board} />);
+  };
 
   render() {
     return (
       <div className="dashboard">
         {this.renderBoards()}
-        <AddBoard/>
+        <AddBoard />
       </div>
     );
   }
@@ -25,6 +26,6 @@ export class Dashboard extends Component {
 
 const mapStateToProps = state => ({
   boards: state.boards
-})
+});
 
-export default connect(mapStateToProps, {fetchBoards})(Dashboard);
+export default connect(mapStateToProps, { fetchBoards })(Dashboard);

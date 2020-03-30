@@ -19,7 +19,7 @@ router.patch(
   "/:id",
   [auth, findResource(Board), validation(validate)],
   async (req, res) => {
-    if (req.resource.userId === req.user._id) {
+    if (req.resource.userId.toString() === req.user._id) {
       await req.resource.set({ title: req.body.title });
       return res.send(req.resource);
     }
@@ -28,7 +28,7 @@ router.patch(
 );
 
 router.delete("/:id", [auth, findResource(Board)], async (req, res) => {
-  if (req.resource.userId === req.user._id) {
+  if (req.resource.userId.toString() === req.user._id) {
     const board = await Board.findByIdAndRemove(req.params.id);
     return res.send(board);
   }
