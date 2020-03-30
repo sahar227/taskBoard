@@ -11,7 +11,9 @@ export class Dashboard extends Component {
   }
 
   renderBoards = () => {
-    return this.props.boards.map(board => <Card board={board} />);
+    return this.props.boards.map(board => (
+      <Card key={board._id} board={board} />
+    ));
   };
 
   render() {

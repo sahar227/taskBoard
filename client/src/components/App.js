@@ -5,6 +5,7 @@ import Signup from "../screens/Signup";
 import Dashboard from "../screens/Dashboard";
 import history from "../history";
 import Header from "./Header";
+import ShowBoard from "../screens/ShowBoard";
 
 export default class App extends Component {
   render() {
@@ -14,6 +15,7 @@ export default class App extends Component {
         <Router history={history}>
           <Switch>
             <Route path="/boards" exact component={Dashboard} />
+            <Route path="/boards/:id" exact component={ShowBoard} />
             <Route path="/login" exact component={Login} />
             <Route path="/signup" exact component={Signup} />
           </Switch>

@@ -12,6 +12,15 @@
   border-radius: 8px;
 }
 
+.card.clickable {
+  cursor: pointer;
+}
+
+.card-link {
+  text-decoration: none;
+  color: black;
+}
+
 .delete-button {
   position: absolute;
   top: 10px;
