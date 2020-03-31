@@ -1,4 +1,4 @@
-const { Task, validate } = require("../models/task");
+const { List, validate } = require("../models/list");
 const validation = require("../middleware/validate");
 const findResource = require("../middleware/findResource");
 const auth = require("../middleware/auth");
@@ -7,29 +7,29 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/", [auth], async (req, res) => {
-  const tasks = await Task.find({
+  const lists = await List.find({
     userId: req.user._id,
     boardId: req.body.boardId
   });
-  return res.send(tasks);
+  return res.send(lists);
 });
 
 router.post("/", [auth, validation(validate)], async (req, res) => {
-  const task = new Task({ ...req.body });
-  await task.save();
-  return res.send(task);
+  const list = new List({ ...req.body });
+  await list.save();
+  return res.send(list);
 });
 
 router.delete(
   "/:id",
-  [auth, findResource(Task), authorize],
+  [auth, findResource(List), authorize],
   async (req, res) => {
-    const task = await Task.findByIdAndRemove(req.params.id);
-    return res.send(task);
+    const list = await List.findByIdAndRemove(req.params.id);
+    return res.send(list);
   }
 );
 
-router.put("/:id", [auth, findResource(Task), authorize], async (req, res) => {
+router.put("/:id", [auth, findResource(List), authorize], async (req, res) => {
   await req.resource.set(...req.params);
   return res.send(req.resource);
 });

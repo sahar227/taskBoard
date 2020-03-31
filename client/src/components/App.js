@@ -6,6 +6,7 @@ import Dashboard from "../screens/Dashboard";
 import history from "../history";
 import Header from "./Header";
 import ShowBoard from "../screens/ShowBoard";
+import "../styles/styles.css";
 
 export default class App extends Component {
   render() {

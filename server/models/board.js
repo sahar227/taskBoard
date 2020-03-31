@@ -13,7 +13,7 @@ const boardSchema = new mongoose.Schema({
   }
 });
 
-const Board = mongoose.model("Boards", boardSchema);
+const Board = mongoose.model("boards", boardSchema);
 
 function validateBoard(board) {
   const schema = {

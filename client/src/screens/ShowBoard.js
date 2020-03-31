@@ -1,14 +1,24 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { fetchBoard } from "../actions/boardActions";
 
-export default class ShowBoard extends Component {
+class ShowBoard extends Component {
+  componentDidMount() {
+    this.props.fetchBoard(this.props.match.params.id);
+  }
   render() {
-    console.log(this.props);
-
     return (
       <div>
         <div>Show board</div>
-        <div>{this.props.match.params.id}</div>
+        <div>
+          {this.props.selectedBoard !== null && this.props.selectedBoard.title}
+        </div>
       </div>
     );
   }
 }
+
+const mapStateToProps = state => ({
+  selectedBoard: state.selectedBoard
+});
+export default connect(mapStateToProps, { fetchBoard })(ShowBoard);
