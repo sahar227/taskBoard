@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchBoard } from "../actions/boardActions";
+import Lists from "../components/Lists";
 
 class ShowBoard extends Component {
   componentDidMount() {
@@ -8,11 +9,11 @@ class ShowBoard extends Component {
   }
   render() {
     return (
-      <div>
-        <div>Show board</div>
-        <div>
-          {this.props.selectedBoard !== null && this.props.selectedBoard.title}
-        </div>
+      <div className="show-board">
+        <h1 className="board-title">
+          {this.props?.selectedBoard?.board?.title ?? ""}
+        </h1>
+        <Lists boardInfo={this.props.selectedBoard} />
       </div>
     );
   }

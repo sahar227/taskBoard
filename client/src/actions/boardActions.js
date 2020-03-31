@@ -36,12 +36,28 @@ export const removeBoard = boardId => async dispatch => {
   }
 };
 
+const fetchResource = async route => {
+  const resource = await api.get(route);
+  if (resource?.status !== 200) return null;
+  return resource.data;
+};
+
 export const fetchBoard = boardId => async dispatch => {
-  const response = await api.get(`/board/${boardId}`);
-  if (response.status === 200) {
+  const boardResponse = await fetchResource(`/board/${boardId}`);
+  const listsResponse = await fetchResource(`/list/${boardId}`);
+  const tasksResponse = await fetchResource(`/task/${boardId}`);
+
+  const isSuccess = boardResponse && listsResponse && tasksResponse;
+
+  if (isSuccess) {
+    const payload = {
+      board: boardResponse,
+      lists: listsResponse,
+      tasks: tasksResponse
+    };
     dispatch({
       type: BOARD_SELECTED,
-      payload: response.data
+      payload
     });
   }
 };
