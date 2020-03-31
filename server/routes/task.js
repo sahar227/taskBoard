@@ -6,16 +6,16 @@ const authorize = require("../middleware/authorize");
 const express = require("express");
 const router = express.Router();
 
-router.get("/", [auth], async (req, res) => {
+router.get("/:boardId", [auth], async (req, res) => {
   const tasks = await Task.find({
     userId: req.user._id,
-    boardId: req.body.boardId
+    boardId: req.params.boardId
   });
   return res.send(tasks);
 });
 
 router.post("/", [auth, validation(validate)], async (req, res) => {
-  const task = new Task({ ...req.body });
+  const task = new Task({ ...req.body, userId: req.user._id });
   await task.save();
   return res.send(task);
 });
