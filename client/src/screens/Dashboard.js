@@ -1,14 +1,19 @@
 import React, { Component } from "react";
-import AddBoard from "../components/AddBoard";
+import ResourceInput from "../components/ResourceInput";
 import "../styles/Dashboard.css";
 import { connect } from "react-redux";
-import { fetchBoards } from "../actions/boardActions";
+import { fetchBoards, createBoard } from "../actions/boardActions";
 import Card from "../components/Card";
 
 export class Dashboard extends Component {
   componentDidMount() {
     this.props.fetchBoards();
   }
+
+  onSubmit = value => {
+    if (value.length < 3) return null;
+    this.props.createBoard(value);
+  };
 
   renderBoards = () => {
     return this.props.boards.map(board => (
@@ -20,7 +25,11 @@ export class Dashboard extends Component {
     return (
       <div className="dashboard">
         {this.renderBoards()}
-        <AddBoard />
+        <ResourceInput
+          title="New board:"
+          placeholder="Enter board name"
+          onSubmit={this.onSubmit}
+        />
       </div>
     );
   }
@@ -30,4 +39,6 @@ const mapStateToProps = state => ({
   boards: state.boards
 });
 
-export default connect(mapStateToProps, { fetchBoards })(Dashboard);
+export default connect(mapStateToProps, { fetchBoards, createBoard })(
+  Dashboard
+);

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import List from "./List";
+import ResourceInput from "../components/ResourceInput";
 import "../styles/Lists.css";
 
 export default class Lists extends Component {
@@ -13,7 +14,7 @@ export default class Lists extends Component {
     return (
       <div className="lists">
         {this.renderLists()}
-        <div>Add list</div>
+        <ResourceInput title="New list:" placeholder="Enter list name" />
       </div>
     );
   }
