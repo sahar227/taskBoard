@@ -3,7 +3,8 @@ import {
   RETRIEVE_BOARDS,
   BOARD_CREATED,
   BOARD_DELETED,
-  BOARD_SELECTED
+  BOARD_SELECTED,
+  LIST_CREATED
 } from "./actions";
 
 export const fetchBoards = () => async dispatch => {
@@ -58,6 +59,16 @@ export const fetchBoard = boardId => async dispatch => {
     dispatch({
       type: BOARD_SELECTED,
       payload
+    });
+  }
+};
+
+export const createList = (boardId, title) => async dispatch => {
+  const response = await api.post("/list", { boardId, title });
+  if (response.status === 200) {
+    dispatch({
+      type: LIST_CREATED,
+      payload: response.data
     });
   }
 };
