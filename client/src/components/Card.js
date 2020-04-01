@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import history from "../history";
 import { connect } from "react-redux";
 import { removeBoard } from "../actions/boardActions";
+import ResourceRemove from "./ResourceRemove";
 import "../styles/Card.css";
 
 class Card extends Component {
@@ -18,9 +19,7 @@ class Card extends Component {
         className="card clickable"
       >
         <div to={`/boards/${_id}`}>{title}</div>
-        <div onClick={this.onRemoveBoard} className="delete-button">
-          X
-        </div>
+        <ResourceRemove onRemove={this.onRemoveBoard} />
       </div>
     );
   }
