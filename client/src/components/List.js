@@ -1,14 +1,24 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { removeList } from "../actions/boardActions";
+import { removeList, createTask } from "../actions/boardActions";
 import ResourceRemove from "./ResourceRemove";
 import ResourceInput from "./ResourceInput";
+import Task from "./Task";
 import "../styles/List.css";
 
 class List extends Component {
   onRemove = () => {
     this.props.removeList(this.props.list._id);
   };
+
+  onAddTask = value => {
+    this.props.createTask(this.props.boardId, this.props.list._id, value);
+  };
+
+  renderTasks = () => {
+    return this.props.tasks.map(task => <Task key={task._id} task={task} />);
+  };
+
   render() {
     return (
       <div className="list">
@@ -17,12 +27,20 @@ class List extends Component {
           <ResourceRemove onRemove={this.onRemove} />
         </div>
         <div className="body">
-          {this.props.list.title}
-          <ResourceInput placeholder="Create new task" className="task-input" />
+          {this.renderTasks()}
+          <ResourceInput
+            onSubmit={this.onAddTask}
+            placeholder="Create new task"
+            className="task-input"
+          />
         </div>
       </div>
     );
   }
 }
 
-export default connect(null, { removeList })(List);
+const mapStateToProps = state => ({
+  boardId: state.selectedBoard.board._id
+});
+
+export default connect(mapStateToProps, { removeList, createTask })(List);

@@ -5,7 +5,9 @@ import {
   BOARD_DELETED,
   BOARD_SELECTED,
   LIST_CREATED,
-  LIST_REMOVED
+  LIST_REMOVED,
+  TASK_CREATED,
+  TASK_REMOVED
 } from "./actions";
 
 export const fetchBoards = () => async dispatch => {
@@ -80,6 +82,30 @@ export const removeList = listId => async dispatch => {
     dispatch({
       type: LIST_REMOVED,
       payload: listId
+    });
+  }
+};
+
+export const createTask = (boardId, listId, title) => async dispatch => {
+  const response = await api.post("/task", {
+    boardId,
+    listId,
+    title
+  });
+  if (response.status === 200) {
+    dispatch({
+      type: TASK_CREATED,
+      payload: response.data
+    });
+  }
+};
+
+export const removeTask = taskId => async dispatch => {
+  const response = await api.delete(`/task/${taskId}`);
+  if (response.status === 200) {
+    dispatch({
+      type: TASK_REMOVED,
+      payload: taskId
     });
   }
 };

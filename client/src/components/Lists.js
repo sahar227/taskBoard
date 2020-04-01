@@ -9,9 +9,13 @@ class Lists extends Component {
   onSubmit = value => {
     this.props.createList(this.props.boardInfo.board._id, value);
   };
+  getTasksForList = listId => {
+    const { tasks } = this.props.boardInfo;
+    return tasks.filter(task => task.listId === listId);
+  };
   renderLists = () => {
     return this.props.boardInfo.lists.map(list => (
-      <List key={list._id} list={list} />
+      <List key={list._id} list={list} tasks={this.getTasksForList(list._id)} />
     ));
   };
   render() {

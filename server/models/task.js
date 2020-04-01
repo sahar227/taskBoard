@@ -10,7 +10,7 @@ const taskSchema = new mongoose.Schema({
   },
   description: {
     type: String,
-    required: true,
+    default: "",
     minlength: 0,
     maxlength: 2048
   },
@@ -19,6 +19,10 @@ const taskSchema = new mongoose.Schema({
     default: Date.now
   },
   boardId: {
+    type: mongoose.Types.ObjectId,
+    required: true
+  },
+  listId: {
     type: mongoose.Types.ObjectId,
     required: true
   },
@@ -36,11 +40,8 @@ function validateTask(task) {
       .min(3)
       .max(50)
       .required(),
-    description: Joi.string()
-      .min(0)
-      .max(2048)
-      .required(),
-    boardId: Joi.objectId().required()
+    boardId: Joi.objectId().required(),
+    listId: Joi.objectId().required()
   };
 
   return Joi.validate(task, schema);

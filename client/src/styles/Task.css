@@ -1,0 +1,10 @@
+.task {
+  position: relative;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid black;
+  cursor: pointer;
+}
+
+.task:hover {
+  background-color: rgb(188, 230, 255);
+}
