@@ -4,7 +4,8 @@ import {
   BOARD_CREATED,
   BOARD_DELETED,
   BOARD_SELECTED,
-  LIST_CREATED
+  LIST_CREATED,
+  LIST_REMOVED
 } from "./actions";
 
 export const fetchBoards = () => async dispatch => {
@@ -69,6 +70,16 @@ export const createList = (boardId, title) => async dispatch => {
     dispatch({
       type: LIST_CREATED,
       payload: response.data
+    });
+  }
+};
+
+export const removeList = listId => async dispatch => {
+  const response = await api.delete(`/list/${listId}`);
+  if (response.status === 200) {
+    dispatch({
+      type: LIST_REMOVED,
+      payload: listId
     });
   }
 };

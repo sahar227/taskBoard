@@ -5,3 +5,4 @@ export const BOARD_CREATED = "BOARD_CREATED";
 export const BOARD_DELETED = "BOARD_DELETED";
 export const BOARD_SELECTED = "BOARD_SELECTED";
 export const LIST_CREATED = "LIST_CREATED";
+export const LIST_REMOVED = "LIST_REMOVED";
