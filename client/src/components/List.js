@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { removeList } from "../actions/boardActions";
 import ResourceRemove from "./ResourceRemove";
+import ResourceInput from "./ResourceInput";
 import "../styles/List.css";
 
 class List extends Component {
@@ -15,7 +16,10 @@ class List extends Component {
           {this.props.list.title}
           <ResourceRemove onRemove={this.onRemove} />
         </div>
-        <div className="body">{this.props.list.title}</div>
+        <div className="body">
+          {this.props.list.title}
+          <ResourceInput placeholder="Create new task" className="task-input" />
+        </div>
       </div>
     );
   }

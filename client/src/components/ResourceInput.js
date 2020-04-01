@@ -16,7 +16,7 @@ class ResourceInput extends Component {
 
   render() {
     return (
-      <div className="card">
+      <div className={this.props.className}>
         <div>{this.props.title}</div>
         <input
           type="text"
@@ -32,7 +32,8 @@ class ResourceInput extends Component {
 
 ResourceInput.defaultProps = {
   title: "",
-  placeholder: ""
+  placeholder: "",
+  className: "card"
 };
 
 export default ResourceInput;
