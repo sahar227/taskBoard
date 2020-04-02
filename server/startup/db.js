@@ -3,8 +3,6 @@ const mongoose = require("mongoose");
 const config = require("config");
 const Fawn = require("fawn");
 
-Fawn.init(mongoose);
-
 module.exports = function() {
   mongoose
     .connect(config.get("connectionString"), {
@@ -13,3 +11,5 @@ module.exports = function() {
     })
     .then(() => winston.info("Connected to MongoDB..."));
 };
+
+Fawn.init(mongoose);

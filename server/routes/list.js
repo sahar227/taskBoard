@@ -1,8 +1,10 @@
 const { List, validate } = require("../models/list");
+const { Task } = require("../models/task");
 const validation = require("../middleware/validate");
 const findResource = require("../middleware/findResource");
 const auth = require("../middleware/auth");
 const authorize = require("../middleware/authorize");
+const Fawn = require("fawn");
 const express = require("express");
 const router = express.Router();
 
@@ -24,8 +26,11 @@ router.delete(
   "/:id",
   [auth, findResource(List), authorize],
   async (req, res) => {
-    const list = await List.findByIdAndRemove(req.params.id);
-    return res.send(list);
+    new Fawn.Task()
+      .remove(List, { _id: req.resource._id })
+      .remove(Task, { listId: req.resource._id })
+      .run();
+    return res.send(req.resource);
   }
 );
 
