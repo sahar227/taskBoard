@@ -1,17 +1,25 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import history from "./history";
+import ResourceRemove from "./components/ResourceRemove";
+import "./styles/Modal.css";
 
 const Modal = props => {
   return ReactDOM.createPortal(
-    <div onClick={props.onDismiss} className="ui dimmer modals visible active">
-      <div
-        onClick={e => e.stopPropagation()}
-        className="ui standard modal visible active"
-      >
-        <div className="header">{props.title}</div>
-        <div className="content">{props.content}</div>
-        <div className="actions">{props.actions}</div>
+    <div onClick={props.onDismiss} className="modal">
+      <div onClick={e => e.stopPropagation()} className="modal-dialog">
+        <div className="modal-header">
+          <ResourceRemove onRemove={props.onDismiss} />
+          {props.title}
+        </div>
+        <div className="modal-content">
+          {props.content}
+          <div>content</div>
+          <div>content</div>
+          <div>content</div>
+          <div>content</div>
+        </div>
+        <div className="modal-actions">{props.actions}</div>
       </div>
     </div>,
     document.querySelector("#modal")

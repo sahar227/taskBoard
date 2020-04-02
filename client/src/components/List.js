@@ -16,7 +16,9 @@ class List extends Component {
   };
 
   renderTasks = () => {
-    return this.props.tasks.map(task => <Task key={task._id} task={task} />);
+    return this.props.tasks.map(task => (
+      <Task key={task._id} task={task} boardId={this.props.boardId} />
+    ));
   };
 
   render() {
