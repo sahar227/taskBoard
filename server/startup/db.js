@@ -7,7 +7,8 @@ module.exports = function() {
   mongoose
     .connect(config.get("connectionString"), {
       useNewUrlParser: true,
-      useUnifiedTopology: true
+      useUnifiedTopology: true,
+      useFindAndModify: false
     })
     .then(() => winston.info("Connected to MongoDB..."));
 };
