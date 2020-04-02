@@ -14,6 +14,15 @@ router.get("/:boardId", [auth], async (req, res) => {
   return res.send(tasks);
 });
 
+router.get("/:boardId/:taskId", [auth], async (req, res) => {
+  const task = await Task.findOne({
+    _id: req.params.taskId,
+    userId: req.user._id,
+    boardId: req.params.boardId
+  });
+  return res.send(task);
+});
+
 router.post("/", [auth, validation(validate)], async (req, res) => {
   const task = new Task({ ...req.body, userId: req.user._id });
   await task.save();
@@ -30,7 +39,8 @@ router.delete(
 );
 
 router.put("/:id", [auth, findResource(Task), authorize], async (req, res) => {
-  await req.resource.set(...req.params);
+  req.resource.set({ ...req.body });
+  await req.resource.save();
   return res.send(req.resource);
 });
 

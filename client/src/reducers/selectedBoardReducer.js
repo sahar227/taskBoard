@@ -3,7 +3,8 @@ import {
   LIST_CREATED,
   LIST_REMOVED,
   TASK_CREATED,
-  TASK_REMOVED
+  TASK_REMOVED,
+  TASK_EDITED
 } from "../actions/actions";
 
 const selectedBoardReducer = (state = null, { type, payload }) => {
@@ -23,6 +24,14 @@ const selectedBoardReducer = (state = null, { type, payload }) => {
       return {
         ...state,
         tasks: state.tasks.filter(task => task._id !== payload)
+      };
+    case TASK_EDITED:
+      return {
+        ...state,
+        tasks: [
+          ...state.tasks.filter(task => task._id !== payload._id),
+          payload
+        ]
       };
     default:
       return state;

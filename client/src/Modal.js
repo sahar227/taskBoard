@@ -8,17 +8,11 @@ const Modal = props => {
   return ReactDOM.createPortal(
     <div onClick={props.onDismiss} className="modal">
       <div onClick={e => e.stopPropagation()} className="modal-dialog">
-        <div className="modal-header">
+        <div className="modal-title">
           <ResourceRemove onRemove={props.onDismiss} />
           {props.title}
         </div>
-        <div className="modal-content">
-          {props.content}
-          <div>content</div>
-          <div>content</div>
-          <div>content</div>
-          <div>content</div>
-        </div>
+        <div className="modal-content">{props.content}</div>
         <div className="modal-actions">{props.actions}</div>
       </div>
     </div>,
@@ -27,7 +21,7 @@ const Modal = props => {
 };
 
 Modal.defaultProps = {
-  title: "Add Modal header",
+  title: "Add Modal title",
   content: "Add Modal content",
   actions: "Add your action component here",
   onDismiss: () => history.push("/")

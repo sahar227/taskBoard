@@ -1,0 +1,32 @@
+.content-conatiner {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0.2rem 1rem;
+}
+
+.edit-task-description {
+  width: 80%;
+  min-height: 18rem;
+  align-self: center;
+  margin: 1rem 0;
+  box-shadow: 1px 1px rgba(0, 0, 0, 0.5);
+  resize: none;
+}
+
+.actions-container {
+  padding: 0 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.task-submit-button {
+  background-color: blue;
+  color: white;
+  padding: 0.8rem;
+  cursor: pointer;
+}
+
+.task-submit-button:hover {
+  background-color: rgb(0, 0, 0);
+}
