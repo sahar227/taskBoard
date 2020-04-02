@@ -9,7 +9,6 @@ class Card extends Component {
   onRemoveBoard = e => {
     const { board, removeBoard } = this.props;
     removeBoard(board._id);
-    e.stopPropagation();
   };
   render() {
     const { _id, title } = this.props.board;
