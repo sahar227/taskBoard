@@ -20,9 +20,8 @@ export default class EditableText extends Component {
     if (this.state.isInputActive) this.focusTextInput();
   }
 
-  switchActive = () => {
-    const { isInputActive } = this.state;
-    this.setState({ isInputActive: !isInputActive });
+  setInputActive = () => {
+    this.setState({ isInputActive: true, text: this.state.savedText });
   };
 
   onTextChange = e => {
@@ -33,28 +32,37 @@ export default class EditableText extends Component {
     this.inputRef.current.focus();
   };
 
+  onSubmit = e => {
+    e.preventDefault();
+    const { text, savedText } = this.state;
+    this.setState({ savedText: text, isInputActive: false });
+    if (text !== savedText) this.props.onSubmit(text);
+  };
+
   render() {
     const { isInputActive, text, savedText } = this.state;
     return (
       <div>
         <div
-          onClick={this.switchActive}
+          onClick={this.setInputActive}
           className={`${this.props.className} ${
             isInputActive ? "not-active" : ""
           } text-view`}
         >
           {savedText}
         </div>
-        <input
-          ref={this.inputRef}
-          onBlur={this.switchActive}
-          className={`${this.props.className} ${
-            !isInputActive ? "not-active" : ""
-          } text-input`}
-          type="text"
-          value={text}
-          onChange={this.onTextChange}
-        />
+        <form onSubmit={this.onSubmit}>
+          <input
+            ref={this.inputRef}
+            onBlur={this.onSubmit}
+            className={`${this.props.className} ${
+              !isInputActive ? "not-active" : ""
+            } text-input`}
+            type="text"
+            value={text}
+            onChange={this.onTextChange}
+          />
+        </form>
       </div>
     );
   }
@@ -62,5 +70,6 @@ export default class EditableText extends Component {
 
 EditableText.defaultProps = {
   className: "",
-  initialValue: ""
+  initialValue: "",
+  onSubmit: value => console.log(value)
 };
