@@ -7,7 +7,7 @@ import history from "../history";
 import "../styles/EditTask.css";
 
 class EditTask extends Component {
-  state = { descriptionText: null };
+  state = { descriptionText: "", initialized: false };
 
   componentDidMount() {
     fetchBoard(this.props.match.params.id);
@@ -16,8 +16,11 @@ class EditTask extends Component {
   }
 
   componentDidUpdate() {
-    if (!this.state.descriptionText && this.state.descriptionText !== "")
-      this.setState({ descriptionText: this.props.task.description });
+    if (!this.state.initialized)
+      this.setState({
+        descriptionText: this.props.task.description,
+        initialized: true
+      });
   }
 
   onInputChange = e => {
