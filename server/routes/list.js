@@ -35,7 +35,8 @@ router.delete(
 );
 
 router.put("/:id", [auth, findResource(List), authorize], async (req, res) => {
-  await req.resource.set(...req.params);
+  req.resource.set({ ...req.body });
+  await req.resource.save();
   return res.send(req.resource);
 });
 

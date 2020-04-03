@@ -8,7 +8,8 @@ import {
   LIST_REMOVED,
   TASK_CREATED,
   TASK_REMOVED,
-  TASK_EDITED
+  TASK_EDITED,
+  LIST_EDITTED
 } from "./actions";
 
 export const fetchBoards = () => async dispatch => {
@@ -83,6 +84,16 @@ export const removeList = listId => async dispatch => {
     dispatch({
       type: LIST_REMOVED,
       payload: listId
+    });
+  }
+};
+
+export const editList = (listId, updatedVals) => async dispatch => {
+  const response = await api.put(`/list/${listId}`, updatedVals);
+  if (response.status === 200) {
+    dispatch({
+      type: LIST_EDITTED,
+      payload: response.data
     });
   }
 };

@@ -6,6 +6,7 @@ export const BOARD_DELETED = "BOARD_DELETED";
 export const BOARD_SELECTED = "BOARD_SELECTED";
 export const LIST_CREATED = "LIST_CREATED";
 export const LIST_REMOVED = "LIST_REMOVED";
+export const LIST_EDITTED = "LIST_EDITTED";
 export const TASK_CREATED = "TASK_CREATED";
 export const TASK_REMOVED = "TASK_REMOVED";
 export const TASK_EDITED = "TASK_EDITED";

@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { removeList, createTask } from "../actions/boardActions";
+import { removeList, createTask, editList } from "../actions/boardActions";
 import ResourceRemove from "./ResourceRemove";
 import ResourceInput from "./ResourceInput";
+import EditableText from "./EditableText";
 import Task from "./Task";
 import "../styles/List.css";
 
@@ -25,7 +26,12 @@ class List extends Component {
     return (
       <div className="list">
         <div className="title">
-          {this.props.list.title}
+          <EditableText
+            onSubmit={value =>
+              this.props.editList(this.props.list._id, { title: value })
+            }
+            initialValue={this.props.list.title}
+          />
           <ResourceRemove onRemove={this.onRemove} />
         </div>
         <div className="body">
@@ -45,4 +51,6 @@ const mapStateToProps = state => ({
   boardId: state.selectedBoard.board._id
 });
 
-export default connect(mapStateToProps, { removeList, createTask })(List);
+export default connect(mapStateToProps, { removeList, createTask, editList })(
+  List
+);
