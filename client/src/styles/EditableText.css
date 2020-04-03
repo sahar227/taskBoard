@@ -1,0 +1,12 @@
+.text-view {
+  cursor: pointer;
+  display: inline-block;
+}
+
+.text-input {
+  text-align: center;
+}
+
+.not-active {
+  display: none;
+}

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchBoard, editTask } from "../actions/boardActions";
 import Modal from "../Modal";
+import EditableText from "../components/EditableText";
 import history from "../history";
 import "../styles/EditTask.css";
 
@@ -21,6 +22,10 @@ class EditTask extends Component {
 
   onInputChange = e => {
     this.setState({ descriptionText: e.target.value });
+  };
+
+  renderTitle = () => {
+    return <EditableText initialValue={this.props.task.title} />;
   };
 
   renderContent = () => {
@@ -49,7 +54,7 @@ class EditTask extends Component {
     return (
       <div className="actions-container">
         <div className="task-submit-button" onClick={this.onSubmit}>
-          Submit
+          Save
         </div>
       </div>
     );
@@ -59,7 +64,7 @@ class EditTask extends Component {
     if (!this.props.task) return null;
     return (
       <Modal
-        title={this.props.task.title}
+        title={this.renderTitle()}
         content={this.renderContent()}
         actions={this.renderActions()}
         onDismiss={() => history.push(`/boards/${this.props.match.params.id}`)}
