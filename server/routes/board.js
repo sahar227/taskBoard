@@ -18,14 +18,11 @@ router.get("/:id", [auth, findResource(Board), authorize], (req, res) => {
   return res.send(req.resource);
 });
 
-router.patch(
-  "/:id",
-  [auth, findResource(Board), validation(validate), authorize],
-  async (req, res) => {
-    await req.resource.set({ title: req.body.title });
-    return res.send(req.resource);
-  }
-);
+router.put("/:id", [auth, findResource(Board), authorize], async (req, res) => {
+  req.resource.set({ ...req.body });
+  await req.resource.save();
+  return res.send(req.resource);
+});
 
 router.delete(
   "/:id",

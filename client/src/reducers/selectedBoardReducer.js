@@ -1,5 +1,6 @@
 import {
   BOARD_SELECTED,
+  BOARD_EDITTED,
   LIST_CREATED,
   LIST_REMOVED,
   TASK_CREATED,
@@ -12,6 +13,8 @@ const selectedBoardReducer = (state = null, { type, payload }) => {
   switch (type) {
     case BOARD_SELECTED:
       return payload;
+    case BOARD_EDITTED:
+      return { ...state, board: payload };
     case LIST_CREATED:
       return { ...state, lists: [...state.lists, payload] };
     case LIST_REMOVED:

@@ -1,19 +1,27 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchBoard } from "../actions/boardActions";
+import { fetchBoard, editBoard } from "../actions/boardActions";
 import Lists from "../components/Lists";
+import EditableText from "../components/EditableText";
 
 class ShowBoard extends Component {
-  componentDidMount() {
+  componentWillMount() {
     this.props.fetchBoard(this.props.match.params.id);
   }
   render() {
+    const { selectedBoard, editBoard } = this.props;
+    const boardTitle = selectedBoard?.board?.title ?? "";
     return (
       <div className="show-board">
         <h1 className="board-title">
-          {this.props?.selectedBoard?.board?.title ?? ""}
+          <EditableText
+            onSubmit={value =>
+              editBoard(selectedBoard.board._id, { title: value })
+            }
+            initialValue={boardTitle}
+          />
         </h1>
-        <Lists boardInfo={this.props.selectedBoard} />
+        <Lists boardInfo={selectedBoard} />
       </div>
     );
   }
@@ -22,4 +30,4 @@ class ShowBoard extends Component {
 const mapStateToProps = state => ({
   selectedBoard: state.selectedBoard
 });
-export default connect(mapStateToProps, { fetchBoard })(ShowBoard);
+export default connect(mapStateToProps, { fetchBoard, editBoard })(ShowBoard);

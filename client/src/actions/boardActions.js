@@ -4,6 +4,7 @@ import {
   BOARD_CREATED,
   BOARD_DELETED,
   BOARD_SELECTED,
+  BOARD_EDITTED,
   LIST_CREATED,
   LIST_REMOVED,
   TASK_CREATED,
@@ -27,6 +28,16 @@ export const createBoard = title => async dispatch => {
   if (response.status === 200) {
     dispatch({
       type: BOARD_CREATED,
+      payload: response.data
+    });
+  }
+};
+
+export const editBoard = (boardId, updatedVals) => async dispatch => {
+  const response = await api.put(`/board/${boardId}`, updatedVals);
+  if (response.status === 200) {
+    dispatch({
+      type: BOARD_EDITTED,
       payload: response.data
     });
   }

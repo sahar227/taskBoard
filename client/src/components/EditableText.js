@@ -7,7 +7,11 @@ export default class EditableText extends Component {
     this.inputRef = React.createRef();
   }
 
-  state = { savedText: "", text: "", isInputActive: false };
+  state = {
+    savedText: "",
+    text: "",
+    isInputActive: false
+  };
 
   componentDidMount() {
     this.setState({
@@ -18,6 +22,9 @@ export default class EditableText extends Component {
 
   componentDidUpdate() {
     if (this.state.isInputActive) this.focusTextInput();
+    const { initialValue } = this.props;
+    if (this.state.savedText !== initialValue)
+      this.setState({ savedText: initialValue, text: initialValue });
   }
 
   setInputActive = () => {
