@@ -28,7 +28,14 @@ class EditTask extends Component {
   };
 
   renderTitle = () => {
-    return <EditableText initialValue={this.props.task.title} />;
+    return (
+      <EditableText
+        onSubmit={value =>
+          this.props.editTask(this.props.task._id, { title: value })
+        }
+        initialValue={this.props.task.title}
+      />
+    );
   };
 
   renderContent = () => {
