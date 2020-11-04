@@ -8,7 +8,8 @@ module.exports = function() {
     .connect(config.get("connectionString"), {
       useNewUrlParser: true,
       useUnifiedTopology: true,
-      useFindAndModify: false
+      useFindAndModify: false,
+      useCreateIndex: true
     })
     .then(() => winston.info("Connected to MongoDB..."));
 };
