@@ -1,5 +1,5 @@
 const winston = require('winston');
-const config = require('config');
+const {connectionString} = require('../environment');
 require('winston-mongodb');
 require('express-async-errors');
 
@@ -14,7 +14,7 @@ module.exports = function() {
   
   winston.add(winston.transports.File, { filename: 'logfile.log' });
   winston.add(winston.transports.MongoDB, { 
-    db: config.get('connectionString'),
+    db: connectionString,
     level: 'info'
   });  
 }
