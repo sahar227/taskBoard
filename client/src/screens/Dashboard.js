@@ -24,6 +24,7 @@ export class Dashboard extends Component {
   render() {
     return (
       <div className="dashboard">
+        <h1>Your boards:</h1>
         {this.renderBoards()}
         <ResourceInput
           title="New board:"

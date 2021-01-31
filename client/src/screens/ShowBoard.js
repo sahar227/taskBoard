@@ -13,7 +13,7 @@ class ShowBoard extends Component {
     const boardTitle = selectedBoard?.board?.title ?? "";
     return (
       <div className="show-board">
-        <h1 className="board-title">
+        <h1 className="board-title" style={{color: "blue"}}>
           <EditableText
             onSubmit={value =>
               editBoard(selectedBoard.board._id, { title: value })

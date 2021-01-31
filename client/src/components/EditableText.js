@@ -56,7 +56,7 @@ export default class EditableText extends Component {
             isInputActive ? "not-active" : ""
           } text-view`}
         >
-          {savedText}
+          <p>{savedText}</p>
         </div>
         <form onSubmit={this.onSubmit}>
           <input
