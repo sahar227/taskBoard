@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Router, Route } from "react-router-dom";
+import SecuredRoute from './SecuredRoute';
 import Login from "../screens/Login";
 import Signup from "../screens/Signup";
 import Dashboard from "../screens/Dashboard";
@@ -15,10 +16,10 @@ export default class App extends Component {
       <div>
         <Header />
         <Router history={history}>
-          <Route path="/" exact component={Dashboard} />
-          <Route path="/boards" exact component={Dashboard} />
-          <Route path="/boards/:id" component={ShowBoard} />
-          <Route path="/boards/:id/:taskId" exact component={EditTask} />
+          <SecuredRoute path="/" exact component={Dashboard} />
+          <SecuredRoute path="/boards" exact component={Dashboard} />
+          <SecuredRoute path="/boards/:id" component={ShowBoard} />
+          <SecuredRoute path="/boards/:id/:taskId" exact component={EditTask} />
           <Route path="/login" exact component={Login} />
           <Route path="/signup" exact component={Signup} />
         </Router>
