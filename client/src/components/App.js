@@ -15,6 +15,7 @@ export default class App extends Component {
       <div>
         <Header />
         <Router history={history}>
+          <Route path="/" exact component={Dashboard} />
           <Route path="/boards" exact component={Dashboard} />
           <Route path="/boards/:id" component={ShowBoard} />
           <Route path="/boards/:id/:taskId" exact component={EditTask} />
