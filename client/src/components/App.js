@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Router, Route } from "react-router-dom";
+import {Router, Route } from "react-router-dom";
 import SecuredRoute from './SecuredRoute';
 import Login from "../screens/Login";
 import Signup from "../screens/Signup";
