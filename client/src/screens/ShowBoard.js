@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import history from '../history'
 import { fetchBoard, editBoard } from "../actions/boardActions";
 import Lists from "../components/Lists";
 import EditableText from "../components/EditableText";
@@ -13,7 +14,8 @@ class ShowBoard extends Component {
     const boardTitle = selectedBoard?.board?.title ?? "";
     return (
       <div className="show-board">
-        <h1 className="board-title" style={{color: "blue"}}>
+        <p className="back"  onClick={() => history.push("/boards")}>back to dashboard</p>
+        <h1 className="board-title">
           <EditableText
             onSubmit={value =>
               editBoard(selectedBoard.board._id, { title: value })

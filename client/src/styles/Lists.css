@@ -2,3 +2,16 @@
   display: flex;
   justify-content: space-around;
 }
+
+.back {
+  color: rgb(0, 122, 41);
+  font-size: 1.3rem;
+  margin-bottom: 0;
+  cursor: pointer;
+}
+
+.board-title {
+  margin: 0 0 1rem 3rem;
+  /* padding: 0; */
+  color: blue;
+}
